@@ -29,4 +29,5 @@
 
 ## 作者列表
 
-- 创始人: [xiaoACE](https://github.com/xiaoACE6716)
+- 本教程文档创始人: [xiaoACE](https://github.com/xiaoACE6716)
+- JKook作者与JKookTutorial作者: [ZX夏夜之风](https://github.com/SNWCreations) 没错，他无形中参与了本文档的编写(笑)
