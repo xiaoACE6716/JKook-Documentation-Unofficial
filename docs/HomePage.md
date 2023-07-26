@@ -2,6 +2,8 @@
 
 欢迎阅读本教程文档，本教程文档旨在介绍基于 JKook API 的 KOOK 机器人插件开发方法。
 
+!> 注意，本文档在删除这句话之前都属于WIP阶段，内容可能十分有九分不严谨
+
 ## 编写本教程的目的
 
 [xiaoACE](https://github.com/xiaoACE6716)认为[JKook API](https://github.com/SNWCreations/JKook) 缺乏一份较为更为正式的教程文档，于是笔者就开了这个坑。 
