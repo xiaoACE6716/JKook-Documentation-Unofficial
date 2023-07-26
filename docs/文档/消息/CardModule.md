@@ -31,6 +31,9 @@ paragraph
 //Paragraph.Builder(int columns)中columns为列数，最大为3
 //Paragraph中可用的元素有MarkdownElement与PlainTextElement
 
+// 你也可以用new Paragraph(Arrays.asList(Some MarkdownElement or PlainTextElement))
+// 但是有Builder当然用Builder啦
+
 cardBuilder.addModule(new SectionModule(new Paragraph.Builder(3)
                 .addField(new MarkdownElement("01"))
                 .addField(new PlainTextElement("02"))
@@ -109,12 +112,114 @@ BaseElement `element`: 此处可传入PlainTextElement或MarkdownElement，内�
 
 ## 图片模块
 
+<!-- tabs:start -->
+### **container**
+1 到9张图片的组合，与图片组模块不同，多张图片会纵向排列。
+```java
+// 你也可以用new ContainerModule(Arrays.asList(Some ImageElement))
+// 但是有Builder当然用Builder啦
+cardBuilder.addModule(new ContainerModule.Builder()
+                .add(new ImageElement("https://img.kaiheila.cn/assets/2021-01/7kr4FkWpLV0ku0ku.jpeg",null, Size.LG,true))
+                .add(new ImageElement("https://img.kaiheila.cn/assets/2021-01/7kr4FkWpLV0ku0ku.jpeg",null, Size.LG,true))
+                ...
+                .build());
+```
+
+### **image-group**
+1 到9张图片的组合，图片呈九宫格显示。
+```java
+// 你也可以用new ImageGroupModule(Arrays.asList(Some ImageElement))
+// 但是有Builder当然用Builder啦
+cardBuilder.addModule(new ImageGroupModule.Builder()
+                .add(new ImageElement("https://img.kaiheila.cn/assets/2021-01/7kr4FkWpLV0ku0ku.jpeg",null, Size.LG,true))
+                .add(new ImageElement("https://img.kaiheila.cn/assets/2021-01/7kr4FkWpLV0ku0ku.jpeg",null, Size.LG,true))
+                ...
+                .build());
+```
+
+<!-- tabs:end -->
+
+!> 在这两个模块中图片的`"circle": true`都不起作用
+
 ## 标题模块
+标题模块只能支持展示标准文本，突出标题样式。
+```java
+cardBuilder.addModule(new HeaderModule("这里是文本内容"));
+```
 
 ## 分割线模块
+展示分割线。
+```java
+cardBuilder.addModule(DividerModule.INSTANCE);
+```
 
+## 交互模块
+交互模块中包含交互控件元素，目前有且只有的交互控件为按钮（button）一个交互模块中最多放4个按钮
+```java
+// 你也可以用new ActionGroupModule(arrays.asList(Some ButtonElement))
+// 但是有Builder当然用Builder啦
+cardBuilder.addModule(new ActionGroupModule.Builder()
+                .add(new ButtonElement(Theme.PRIMARY, "value", ButtonElement.EventType.RETURN_VAL, new PlainTextElement("按钮上的文字")))
+                .add(new ButtonElement(Theme.PRIMARY, "value", ButtonElement.EventType.RETURN_VAL, new PlainTextElement("按钮上的文字")))
+                ...
+                .build());
+```
 ## 备注模块
+展示图文混合的内容。
+
+> 此处图片的`"circle": true`起作用
+
+```java
+cardBuilder.addModule(new ContextModule.Builder()
+                .add(new MarkdownElement("这是文本"))
+                .add(new ImageElement("https://img.kaiheila.cn/assets/2021-01/7kr4FkWpLV0ku0ku.jpeg", null, Size.LG, true))
+                .add(new MarkdownElement("这是文本"))
+                .build());
+```
 
 ## 文件模块
+展示文件，目前有三种，文件，视频和音频。
+```java
+// 文件
+cardBuilder.addModule(new FileModule(FileComponent.Type.FILE,
+                "https://img.kaiheila.cn/attachments/2021-01/21/600972b5d0d31.txt",
+                "KOOK介绍.txt",
+                null));
+// 音频
+cardBuilder.addModule(new FileModule(FileComponent.Type.FILE,
+                "https://img.kaiheila.cn/attachments/2021-01/21/600975671b9ab.mp3",
+                "命运交响曲",
+                "https://img.kaiheila.cn/assets/2021-01/rcdqa8fAOO0hs0mc.jpg"));
+// 视频
+cardBuilder.addModule(new FileModule(FileComponent.Type.FILE,
+                "https://img.kaiheila.cn/attachments/2021-01/20/6008127e8c8de.mp4",
+                "有本事别笑",
+                null));
+```
 
 ## 倒计时模块
+
+!> 注意，此处的startTime与endTime均为时间戳
+
+!> 不传startTime默认为从发送卡片那一刻开始
+
+<!-- tabs:start -->
+### **常规倒计时**
+```java
+cardBuilder.addModule(new CountdownModule(CountdownModule.Type.DAY,endTime));
+// 或者
+cardBuilder.addModule(new CountdownModule(CountdownModule.Type.DAY,startTime,endTime));
+```
+### **小时倒计时**
+```java
+cardBuilder.addModule(new CountdownModule(CountdownModule.Type.HOUR,endTime));
+// 或者
+cardBuilder.addModule(new CountdownModule(CountdownModule.Type.HOUR,startTime,endTime));
+```
+### **读秒倒计时**
+```java
+cardBuilder.addModule(new CountdownModule(CountdownModule.Type.SECOND,endTime));
+// 或者
+cardBuilder.addModule(new CountdownModule(CountdownModule.Type.SECOND,startTime,endTime));
+```
+<!-- tabs:end -->
