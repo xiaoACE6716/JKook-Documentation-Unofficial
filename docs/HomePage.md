@@ -6,7 +6,7 @@
 
 ## 编写本教程的目的
 
-[xiaoACE](https://github.com/xiaoACE6716)认为[JKook API](https://github.com/SNWCreations/JKook) 缺乏一份较为更为正式的教程文档，于是笔者就开了这个坑。 
+[xiaoACE](https://github.com/xiaoACE6716)认为[JKook API](https://github.com/SNWCreations/JKook) 缺乏一份更细化的教程文档，于是笔者就开了这个坑。 
 
 ## 关于本教程中部分内容的说明
 
