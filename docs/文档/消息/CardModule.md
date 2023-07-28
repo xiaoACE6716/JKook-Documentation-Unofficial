@@ -6,7 +6,6 @@
 
 ### **纯文本**
 plain-text
-
 ```java
 //不使用kmarkdown,不使用emoji短码转换
 cardBuilder.addModule(new SectionModule("Hello world", false));
@@ -16,7 +15,6 @@ cardBuilder.addModule(new SectionModule("Hello world", false, true));
 
 ### **kmarkdown文本**
 kmarkdown
-
 ```java
 //不使用emoji短码转换
 cardBuilder.addModule(new SectionModule("Hello world"));
@@ -26,7 +24,6 @@ cardBuilder.addModule(new SectionModule("Hello world", true, true));
 
 ### **多列文本**
 paragraph
-
 ```java
 //Paragraph.Builder(int columns)中columns为列数，最大为3
 //Paragraph中可用的元素有MarkdownElement与PlainTextElement
@@ -114,7 +111,7 @@ BaseElement `element`: 此处可传入PlainTextElement或MarkdownElement，内�
 
 <!-- tabs:start -->
 ### **container**
-1 到9张图片的组合，与图片组模块不同，多张图片会纵向排列。
+1到9张图片的组合，与图片组模块不同，多张图片会纵向排列。
 ```java
 // 你也可以用new ContainerModule(Arrays.asList(Some ImageElement))
 // 但是有Builder当然用Builder啦
@@ -126,7 +123,7 @@ cardBuilder.addModule(new ContainerModule.Builder()
 ```
 
 ### **image-group**
-1 到9张图片的组合，图片呈九宫格显示。
+1到9张图片的组合，图片呈九宫格显示。
 ```java
 // 你也可以用new ImageGroupModule(Arrays.asList(Some ImageElement))
 // 但是有Builder当然用Builder啦
@@ -198,6 +195,7 @@ cardBuilder.addModule(new FileModule(FileComponent.Type.FILE,
 ```
 
 ## 倒计时模块
+展示倒计时。
 
 !> 注意，此处的startTime与endTime均为时间戳
 
@@ -223,3 +221,17 @@ cardBuilder.addModule(new CountdownModule(CountdownModule.Type.SECOND,endTime));
 cardBuilder.addModule(new CountdownModule(CountdownModule.Type.SECOND,startTime,endTime));
 ```
 <!-- tabs:end -->
+
+## 邀请模块
+提供服务器邀请/语音频道邀请。  
+该模块没有在卡片编辑器中提供，但是在文档中有说明
+```java
+// 可以是服务器或者是频道的短码
+cardBuilder.addModule(new InviteModule("aecCr6"));
+// 也可以是完整的邀请链接
+cardBuilder.addModule(new InviteModule("https://kook.top/aecCr6"));
+
+// 搭配createInvite方法(其中3600为过期时间，单位：秒 100为邀请可用次数)
+cardBuilder.addModule(new InviteModule(Channel.createInvite(3600, 100)));
+cardBuilder.addModule(new InviteModule(Guild.createInvite(3600, 100)));
+```
