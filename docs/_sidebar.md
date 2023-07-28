@@ -12,6 +12,9 @@
   - 消息
     - [CardBuilder](文档/消息/CardBuilder.md)
     - [卡片模块](文档/消息/CardModule.md)
+  - 事件
+    - [基本用法](文档/事件/Index.md)
+    - [事件列表](文档/事件/EventList.md)
 
 - 附录
   - 表情符号

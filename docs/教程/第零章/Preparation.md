@@ -12,11 +12,11 @@
 ### 什么是JKook API 
 
 > [JKook API](https://github.com/SNWCreations/JKook) 是一个参考 Bukkit API 架构而设计的，面向 JVM 平台的，高度封装的，提供完整 KOOK API 抽象描述的 Java API 项目。
-> <div align="right">——ZX夏夜之风</div>
+> <div align="right"><a href='https://github.com/SNWCreations'>——ZX夏夜之风</a></div>
 
 > [Bukkit API](https://hub.spigotmc.org/stash/projects/SPIGOT) 是 The Bukkit Project 的一部分，是由一组 Minecraft 游戏内容的 Java 接口抽象组成的 Java API 项目，
 > 用于编写 Minecraft 服务器插件，以在不直接让插件修改 Minecraft 服务端源代码的情况下介入游戏逻辑。 
-> <div align="right">——ZX夏夜之风</div>
+> <div align="right"><a href='https://github.com/SNWCreations'>——ZX夏夜之风</a></div>
 
 #### JKook的特点
 
@@ -32,7 +32,7 @@
 > 虽然它是“for Java”的，但我们更喜欢跨语言的标准。
 > 
 > 我们的最终目标是让开发者能够使用 JKook 作为多种编程语言下的 Kook 机器人的开发框架。
-> <div align="right">——ZX夏夜之风</div>
+> <div align="right"><a href='https://github.com/SNWCreations'>——ZX夏夜之风</a></div>
 
 ## 准备工作
 
