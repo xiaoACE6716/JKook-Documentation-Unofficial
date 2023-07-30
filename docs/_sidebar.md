@@ -9,7 +9,10 @@
   - 第二章
 
 - 目录
+  - 实体
+    - [基本概念](文档/实体/Index.md)
   - 消息
+    - [基本概念](文档/消息/Index.md)
     - [CardBuilder](文档/消息/CardBuilder.md)
     - [卡片模块](文档/消息/CardModule.md)
   - 事件
