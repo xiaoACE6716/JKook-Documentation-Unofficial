@@ -39,6 +39,7 @@ public class MyPlugin extends BasePlugin {
 JKook支持自定义事件！  
 编写一个继承 `Event` 的类即可，当你的事件发生时，可通过 `new` 一个事件对象然后通过 `EventManager#callEvent` 方法发布事件。
 
-!> 注意：`callEvent` 方法是同步的。
+!> 注意：`callEvent` 方法是同步的。  
+这意味着这个方法会在所有监听了你提交的事件的代码返回之后才返回，如果你只需要发布一个事件，而不需要关心后续，可以考虑用任务调度器发布事件，以提升代码性能。
 
 例子将在未来补充
