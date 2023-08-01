@@ -65,9 +65,14 @@ cardBuilder.addModule(new SectionModule(new MarkdownElement("这是文本"),
 
 > ImageElement与ButtonElement详细的说明如下: 
 
+#### Accessory
+
+此处插播一个概念 `Accessory` 表示一种可以嵌入进其他卡片元素的元素。  
+`ImageElement` 与 `ButtonElement` 就是`Accessory`
+
 <!-- tabs:start -->
 
-### **ImageElement**
+##### **ImageElement**
 
 `ImageElement`对象的构造参数有: 
 
@@ -86,7 +91,7 @@ Size `size`: 图片的大小
 boolean `circle`: 图片是否显示为圆形
 
 
-### **ButtonElement**
+##### **ButtonElement**
 
 `ButtonElement`对象的构造参数有: 
 

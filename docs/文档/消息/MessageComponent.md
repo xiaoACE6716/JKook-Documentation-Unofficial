@@ -19,6 +19,11 @@
 > 你可以根据文件的类型，在构造它的时候指定类型。不同的类型在 KOOK 客户端中渲染的效果不一样。  
 > **发送音乐文件时更推荐使用卡片消息中的 `FileModule` ，可以指定封面图片。**
 
+```java
+// 一个图片消息的实例
+FileComponent fileComponent = new FileComponent("https://img.kaiheila.cn/assets/2021-01/7kr4FkWpLV0ku0ku.jpeg", "没见过这么萌的狗狗吗？", 1024, FileComponent.Type.IMAGE);
+```
+
 `CardComponent` 与 `MultipleCardComponent` : 卡片消息组件。前者为单张卡片，后者为多张卡片。  
 可以通过[CardBuild](文档/消息/CardBuilder.md)去帮助构建卡片。
 
