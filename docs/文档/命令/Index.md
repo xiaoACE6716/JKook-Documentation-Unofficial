@@ -132,12 +132,109 @@ new JKookCommand("test")
         .register(Plugin);
 ```
 
-### 执行器
+### 命令执行器
 
-WIP!
+#### UserCommandExecutor
+
+`UserCommandExecutor` 接口的 sender 的类型是 User 。表示用户使用的命令。
+
+为一个命令对象设置 UserCommandExecutor 可以调用 JKookCommand#executesUser 方法。
+
+```java
+new JKookCommand("test")
+        .executesUser((user, objects, message) -> {
+        //...
+        });
+```
+
+### ConsoleCommandExecutor
+
+`ConsoleCommandExecutor` 接口的 sender 的类型是 ConsoleCommandSender 。表示控制台使用的命令。
+
+```java
+new JKookCommand("test")
+        .executesConsole((consoleCommandSender, objects, message) -> {
+        //...
+        });
+```
 
 ### 参数解析系统
 
+> Copy from [JKookTutorial第六章](https://github.com/SNWCreations/JKookTutorial/blob/master/ch_6/README.md)
+
 !> 本节的内容需要 JKook API 版本为 0.38+ 。
 
-WIP!
+我相信 `String[]` 作为存放参数的容器对于复杂的命令是很不友好的，因为对于命令中的标准数据类型需要你自行调用相关的方法进行解析。
+
+所以我们在高版本 API 引入了参数解析系统。
+
+此系统中的核心方法有如下三个:
+* `snw.jkook.command.JKookCommand#addArgument`
+* `snw.jkook.command.JKookCommand#addOptionalArgument`
+* `snw.jkook.command.CommandManager#registerArgumentParser`
+
+一个简单的参数解析系统的使用示例可以在本章的示例代码的第 3 处找到。
+
+### JKookCommand#addArgument
+
+此方法用于向你的命令对象增加一个必选参数。
+
+当执行命令前无法解析出参数的内容时，命令将被拒绝执行。
+
+其方法签名如下:
+
+```java
+public final class JKookCommand {
+    public JKookCommand addArgument(Class<?> cls) {
+        // 具体实现已忽略
+    }
+}
+```
+
+要求传入一个参数的具体类型，若此类型不受支持将会抛出异常。
+
+**传入的类型不可以是 `java.lang.Object` 的 `Class` 对象。**
+
+### JKookCommand#addOptionalArgument
+
+此方法用于向你的命令对象增加一个可选参数。
+
+当执行命令前无法解析出参数的内容时，将向命令执行器传入提供的默认值。
+
+其方法签名如下:
+
+```java
+public final class JKookCommand {
+    public <T> JKookCommand addOptionalArgument(Class<T> cls, T defaultValue) {
+        // 具体实现已忽略
+    }
+}
+```
+
+要求传入一个参数的具体类型以及一个与传入的类型所对应的对象作为默认值，若此类型不受支持将会抛出异常。
+
+**传入的类型不可以是 `java.lang.Object` 的 `Class` 对象。**
+
+### CommandManager#registerArgumentParser
+
+此方法用于注册一个参数解析器。
+
+**请一定要在注册命令前注册自定义的参数解析器！**
+
+一个 JKook API 的实现默认提供以下类型的解析器:
+```text
+int 及其包装器类型 java.lang.Integer
+double 及其包装器类型 java.lang.Double
+boolean 及其包装器类型 java.lang.Boolean
+String
+snw.jkook.entity.User
+snw.jkook.entity.TextChannel
+```
+
+为什么没有 `float` 的？
+
+可以用 `double` 类型替代。或者你可以自行注册一个。
+
+`User` 的解析器通过解析 [KMarkdown](https://developer.kookapp.cn/doc/kmarkdown) 中的 `(met)` 标签实现。它在 KOOK 客户端中的表现是 `@某人` 。
+
+`TextChannel` 的解析器通过解析 [KMarkdown](https://developer.kookapp.cn/doc/kmarkdown) 中的 `(chn)` 标签实现。它在 KOOK 客户端中的表现是 `#某频道` 。
