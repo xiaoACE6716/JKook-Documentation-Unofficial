@@ -33,4 +33,6 @@
   - 表情符号
     - [表情符号](附录/表情符号/emoji.md)
     - [表情符号列表](附录/表情符号/emoji-list.md)
-
+  - KookBC
+    - [KookBC](附录/KookBC/Index.md)
+    - [LiteCommand](附录/KookBC/LiteCommand.md)
