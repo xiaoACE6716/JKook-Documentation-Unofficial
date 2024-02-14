@@ -19,4 +19,4 @@
 在动手完成后再来看看xiaoACE提供的示例代码吧。  
 (功能并未完全完成，但是关于KOOK部分已经全了)
 
-<a href="示例代码/Tutorial-Plugin.zip" download>示例代码下载</a>
+<a href="[示例代码/Tutorial-Plugin.zip](https://raw.githubusercontent.com/xiaoACE6716/JKook-Documentation-Unofficial/main/docs/教程/第三章/示例代码/Tutorial-Plugin.zip)" download>示例代码下载</a>
