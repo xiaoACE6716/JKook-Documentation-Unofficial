@@ -19,8 +19,8 @@ public class myFistLiteCommand {
     @Execute
     String execute(@Context CommandSender sender, @Context Message message) {
 
-        sender.reply("你使用了/myFistLiteCommand");
         // ...
+        return "你使用了/myFistLiteCommand";
 
     }
 
@@ -33,4 +33,67 @@ public class myFistLiteCommand {
 
     }
 }
+```
+
+##  简单易用的注解们
+
+ - @Arg 表示必选参数
+ - @OptionalArg 表示可选参数，当未提供参数时，该参数将设置`null`为默认值
+
+示例: 
+```java
+@Command(name = "give")
+public class GiveCommand {
+    @Execute
+    void give(@Arg Player target, @Arg Material type, @OptionalArg int amount) {
+        // Command implementation
+        if (amount == null) {
+            amount = 1;
+        }
+    }
+}
+```
+
+- @Flag 用于定义命令方法的标志，标志是修改命令行为的可选参数。
+示例:
+```java
+@Command(name = "mute")
+public class MuteCommand {
+    @Execute
+    public void mute(
+        @Arg Player player,
+        @Flag("-s") boolean isSilent
+    ) {
+        // ..
+    }
+}
+```
+在示例中，如果在使用命令时输入了参数`-s`，则布尔变量`isSilent`为`true`，否则为`false`。
+
+- @Join 用于将多个参数连接成单个字符串
+示例:
+```java
+@Command(name = "ban")
+public class BanCommand {
+    @Execute
+    public void ban(
+        @Arg Player target,
+        @Join String reason
+    ) {
+        // Command implementation
+    }
+}
+```
+在示例中，当你输入: `/ban xiaoACE Just a example`  
+此时`reason`的结果为: `Just a example`
+
+另外，你可能想要限制参数拼接的数量
+```java
+// 只会连接两个
+@Join(limit = 2)
+```
+或者你不想用空格作为分隔符
+```java
+// 此时分隔符为: -
+@Join(separator = "-")
 ```
