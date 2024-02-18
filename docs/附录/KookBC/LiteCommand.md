@@ -33,7 +33,21 @@ public class myFistLiteCommand {
 
     }
 }
+
+// 不要忘记注册命令
+// 在你的插件主类的 onEnable() 中
+@Override
+public void onEnable() {
+
+    LiteKookFactory.builder(this)
+            .commands(new myFistLiteCommand(this))
+            .build();
+        
+}
+
 ```
+
+
 
 ##  简单易用的注解们
 
