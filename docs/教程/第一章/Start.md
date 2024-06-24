@@ -41,13 +41,16 @@ public class Main extends BasePlugin {
 
 ### plugin.yml
 
+接下来我们应该告诉机器人框架：「这是个插件哦！」  
 创建好主类后，应该就要着手开始编写plugin.yml了，这里存放着插件的描述信息。 
 放在项目的 resources 中  
-使用 YAML 格式编写
+这个文件的名字不能修改，否则不认  
+该文件使用 YAML 格式编写
 
 !> 请注意: YAML 对缩进要求很严格。
 
-这篇教程中，笔者将插件命名为: Tutorial-Plugin 版本号: 1.0  
+这篇教程中，笔者将插件命名为: Tutorial-Plugin  
+版本号: 1.0  
 JKook api所用的版本为: 0.49.2   
 主类路径为: com.xiaoace.Main.java
 故填写如下
@@ -58,6 +61,8 @@ api-version: 0.49.2
 authors: ["xiaoACE"]
 main: com.xiaoace.Main
 ```
+
+做完这步，一个可以被加载运行的插件就做好了。  
 
 ### config.yml
 
